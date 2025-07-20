@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_auth"
+    app:startDestination="@id/fragment_login">
+
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.example.doancuoiki_dotcuoi.fragment.FragmentLogin"
+        android:label="Đăng nhập">
+        <!-- Đăng nhập sang đăng ký -->
+        <action
+            android:id="@+id/action_login_to_signin"
+            app:destination="@id/fragment_signin" />
+        <!-- Đăng nhập sang quên mật khẩu -->
+        <action
+            android:id="@+id/action_login_to_forget"
+            app:destination="@id/fragment_forget" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_signin"
+        android:name="com.example.doancuoiki_dotcuoi.fragment.FragmentSignin"
+        android:label="Đăng ký">
+        <!-- Đăng ký xong về đăng nhập -->
+        <action
+            android:id="@+id/action_signin_to_login"
+            app:destination="@id/fragment_login" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_forget"
+        android:name="com.example.doancuoiki_dotcuoi.fragment.FragmentForget"
+        android:label="Quên mật khẩu">
+        <!-- Quên mật khẩu xong về đăng nhập -->
+        <action
+            android:id="@+id/action_forget_to_login"
+            app:destination="@id/fragment_login" />
+    </fragment>
+
+</navigation>

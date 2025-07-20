@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/layoutMain"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:text="@string/h_m"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvImages"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_marginBottom="4dp" />
+
+        <Button
+            android:id="@+id/btnAddImage"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="@string/then"
+            android:backgroundTint="#00ACC1"
+            android:textColor="@android:color/white"
+            android:layout_gravity="start"
+            android:textSize="13sp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView android:text="@string/t_n_s_n_ph_" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:hint="@string/nh_p_t_n_s_n_ph_"
+            android:background="@drawable/bg_edittext"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textSize="14sp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView android:text="@string/mota" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_edittext"
+            android:gravity="top"
+            android:hint="@string/nh_p_m_ta"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textSize="14sp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView android:text="@string/gi_vnd" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edtPrice"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:inputType="number"
+            android:hint="@string/vd_150000"
+            android:background="@drawable/bg_edittext"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textSize="14sp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView android:text="@string/t_nh_tr_n" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spinnerCondition"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_edittext"
+            android:paddingStart="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView android:text="@string/danh" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_edittext"
+            android:paddingStart="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView android:text="@string/ssfg" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spinnerStatus"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_edittext"
+            android:paddingStart="4dp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView android:text="@string/v_tri" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:hint="@string/ch_n_v_tr_b_"
+            android:background="@drawable/bg_edittext"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:focusable="false"
+            android:clickable="true"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView android:text="@string/th_m_m_gi_m_gi" android:textStyle="bold" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+            <EditText
+                android:id="@+id/edtDiscountCode"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="36dp"
+                android:hint="@string/m_gi_m"
+                android:background="@drawable/bg_edittext"
+                android:textSize="13sp"/>
+            <EditText
+                android:id="@+id/edtDiscountAmount"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="36dp"
+                android:hint="@string/s_ti_n_gi_m"
+                android:inputType="number"
+                android:background="@drawable/bg_edittext"
+                android:textSize="13sp"
+                android:layout_marginStart="4dp"/>
+            <Button
+                android:id="@+id/btnAddDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="@string/emm"
+                android:textColor="@color/white"
+                android:backgroundTint="#2BB2F6"
+                android:textSize="13sp"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDiscounts"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/l_u_ch_nh_s_a"
+            android:backgroundTint="#2196F3"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/hu"
+            android:backgroundTint="#E53935"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</ScrollView>

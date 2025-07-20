@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Thanh trên cùng: Nút Back và Tiêu đề -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:paddingTop="18dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            app:tint="@android:color/white"
+            android:contentDescription="@string/back_"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/t_m_ki_m_s_n_ph_m"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Khung nhập điều kiện tìm kiếm -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Tên sản phẩm -->
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:hint="@string/nh_p_t_n_s_n_ph_mm"
+                android:inputType="text"
+                android:background="@drawable/bg_edittext"
+                android:paddingStart="8dp"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp"/>
+
+            <!-- Giá thấp nhất và cao nhất (SPINNER) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="6dp">
+
+                <Spinner
+                    android:id="@+id/spnMinPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edittext"
+                    android:layout_marginEnd="6dp"/>
+
+                <Spinner
+                    android:id="@+id/spnMaxPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edittext"/>
+            </LinearLayout>
+
+            <!-- Tình trạng & Danh mục -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="6dp">
+
+                <Spinner
+                    android:id="@+id/spnCondition"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edittext"
+                    android:layout_marginEnd="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spnCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edittext"/>
+            </LinearLayout>
+
+            <!-- Địa chỉ (SPINNER) -->
+            <Spinner
+                android:id="@+id/spnLocation"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_edittext"
+                android:paddingStart="8dp"
+                android:textSize="14sp"
+                android:layout_marginBottom="6dp"/>
+
+            <!-- Sắp xếp (SPINNER) -->
+
+            <!-- Nút Tìm kiếm -->
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/t_m_ki_mm"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#1976D2"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp">
+
+        <TextView
+            android:id="@+id/tvListTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/danh_s_ch_s_n_ph_m"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#1976D2"
+            android:gravity="start"/>
+
+        <Spinner
+            android:id="@+id/spnSort"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_edittext"/>
+    </LinearLayout>
+
+    <!-- Danh sách sản phẩm -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="4dp"
+        android:overScrollMode="never"/>
+
+    <!-- Text báo không có sản phẩm -->
+    <TextView
+        android:id="@+id/tvNoProducts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/kh_ng_t_m_th_y_s_n_ph_m_n_o_ph_h_p"
+        android:textSize="15sp"
+        android:textColor="#888"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"/>
+</LinearLayout>

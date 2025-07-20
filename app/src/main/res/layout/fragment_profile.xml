@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- HEADER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#79CFFB"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/ivAvatar"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_profile"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/bg_round_avatar" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp">
+
+                    <TextView
+                        android:id="@+id/tvFullName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/t_n_ng_i_d_ng"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="#212121"/>
+
+                    <TextView
+                        android:id="@+id/tvEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mail"
+                        android:textColor="#180000"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/tvCreatedAt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ng_y_t_o_10_07_2024"
+                        android:textColor="#1D0101"
+                        android:textSize="13sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- NHÓM QUẢN LÝ -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/qu_n_l"
+                android:textStyle="bold"
+                android:textColor="#070707"
+                android:background="#F0EBEB"
+                android:paddingStart="20dp"
+                android:paddingTop="18dp"
+                android:paddingBottom="6dp"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/tvReviews"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingStart="24dp"
+                android:text="@string/c_c_nh_gi_s_n_ph_m"
+                android:textSize="16sp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="#212121"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6"/>
+
+            <TextView
+                android:id="@+id/tvTransactions"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingStart="24dp"
+                android:text="@string/qu_n_l_giao_d_ch"
+                android:textSize="16sp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="#212121"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6"/>
+
+            <TextView
+                android:id="@+id/tvOffers"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingStart="24dp"
+                android:text="@string/c_c_y_u_c_u_tr_gi"
+                android:textSize="16sp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="#212121"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6"/>
+
+            <TextView
+                android:id="@+id/tvListProduct"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingStart="24dp"
+                android:text="@string/danh_s_ch_s_n_ph_m_c_nh_n"
+                android:textSize="16sp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="#212121"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6"/>
+
+            <!-- NHÓM CÁ NHÂN -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/c_nh_n"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:paddingStart="20dp"
+                android:paddingTop="18dp"
+                android:background="#F0EBEB"
+                android:paddingBottom="6dp"
+                android:textSize="15sp"/>
+
+
+            <TextView
+                android:id="@+id/tvEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingStart="24dp"
+                android:text="@string/ch_nh_s_a_t_i_kho_n"
+                android:textSize="16sp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="#212121"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6"/>
+
+            <TextView
+                android:id="@+id/tvPrivacy"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingStart="24dp"
+                android:text="@string/quy_n_ri_ng_t"
+                android:textSize="16sp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="#212121"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6"/>
+
+            <TextView
+                android:id="@+id/tvLogout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingStart="24dp"
+                android:text="@string/ng_xu_t"
+                android:textSize="16sp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="#212121"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6"/>
+
+            <TextView
+                android:id="@+id/tvDeleteAccount"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingStart="24dp"
+                android:text="@string/x_a_t_i_kho_n"
+                android:textSize="16sp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="#C62828"/>
+            <View android:layout_width="match_parent" android:layout_height="16dp" android:background="@android:color/transparent"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

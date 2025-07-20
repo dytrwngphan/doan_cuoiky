@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Toolbar -->
+    <LinearLayout
+        android:id="@+id/layoutToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#1E88E5"
+        android:padding="12dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="37dp"
+            android:contentDescription="@string/back"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back"
+            android:backgroundTint="@color/white"/>
+
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_round_avatar"
+            android:src="@drawable/ic_profile"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/t_n_ng_i_nh_n"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            android:textColor="#fff"/>
+
+        <ImageButton
+            android:id="@+id/btnBlock"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_block"
+            android:contentDescription="@string/block"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="end"/>
+    </LinearLayout>
+
+    <!-- Danh sách tin nhắn -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:scrollbars="vertical" />
+
+    <!-- Thanh nhập tin nhắn -->
+    <LinearLayout
+        android:id="@+id/layoutInput"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="#F7F7F9"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/btnEmoji"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_emoji"
+            android:contentDescription="@string/emoji" />
+
+        <com.vanniktech.emoji.EmojiEditText
+            android:id="@+id/etMsg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:hint="@string/nh_p_tin_nh_n"
+            android:maxLines="5"
+            android:minHeight="38dp"
+            android:background="@drawable/bg_edittext"
+            android:padding="8dp"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/btnImage"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_image"
+            android:contentDescription="@string/nh" />
+
+        <ImageButton
+            android:id="@+id/btnSend"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_send"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/g_i" />
+    </LinearLayout>
+</LinearLayout>
