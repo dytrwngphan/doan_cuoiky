@@ -23,7 +23,7 @@ import java.util.List;
 public class ProfileFragment extends Fragment {
 
     private ImageView ivAvatar;
-    private TextView tvFullName, tvEmail, tvCreatedAt, tvReviews;
+    private TextView tvFullName, tvEmail, tvCreatedAt, tvReviews, tvOffers;
     private TextView tvListProduct;
     private TextView tvEditProfile, tvLogout, tvDeleteAccount;
     private FirebaseAuth mAuth;
@@ -35,6 +35,7 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         ivAvatar = view.findViewById(R.id.ivAvatar);
+        TextView tvOffers = view.findViewById(R.id.tvOffers);
         tvFullName = view.findViewById(R.id.tvFullName);
         tvEmail = view.findViewById(R.id.tvEmail);
         tvCreatedAt = view.findViewById(R.id.tvCreatedAt);
@@ -55,6 +56,16 @@ public class ProfileFragment extends Fragment {
         });
         tvReviews.setOnClickListener(v -> {
             Fragment fragment = new AllReviewFragment();
+            requireActivity().findViewById(R.id.detailContainer).setVisibility(View.VISIBLE);
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.detailContainer, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
+
+        tvOffers.setOnClickListener(v -> {
+            Fragment fragment = new OfferListFragment(); // Giả sử bạn đã có OfferListFragment
             requireActivity().findViewById(R.id.detailContainer).setVisibility(View.VISIBLE);
             requireActivity().getSupportFragmentManager()
                     .beginTransaction()

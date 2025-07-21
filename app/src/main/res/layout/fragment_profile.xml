@@ -158,12 +158,14 @@
                 android:id="@+id/tvPrivacy"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:gravity="center_vertical"
                 android:paddingStart="24dp"
                 android:text="@string/quy_n_ri_ng_t"
+                android:textColor="#212121"
                 android:textSize="16sp"
-                android:background="?android:attr/selectableItemBackground"
-                android:textColor="#212121"/>
+                android:visibility="gone"/>
+
             <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6"/>
 
             <TextView

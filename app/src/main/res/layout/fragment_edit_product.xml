@@ -117,13 +117,14 @@
             android:clickable="true"
             android:layout_marginBottom="4dp"/>
 
-        <TextView android:text="@string/th_m_m_gi_m_gi" android:textStyle="bold" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:text="@string/th_m_m_gi_m_gi" android:textStyle="bold" android:textSize="13sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="4dp">
+            android:layout_marginBottom="4dp"
+            android:visibility="gone">
             <EditText
                 android:id="@+id/edtDiscountCode"
                 android:layout_width="0dp"

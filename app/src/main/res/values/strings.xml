@@ -157,4 +157,26 @@
     <string name="t_n_b_i_post_laptop_acer_aspire">Tên bài post: Laptop Acer Aspire</string>
     <string name="nh_gi_s_n_ph_m_r_t_t_t">Đánh giá: Sản phẩm rất tốt!</string>
     <string name="ng_y_nh_gi_12_07_2024_20_45">Ngày đánh giá: 12/07/2024 20:45</string>
+    <string name="ddd">Giỏ hàng</string>
+    <string name="quay_l_">Quay lại</string>
+    <string name="danh_s_ch_tr_gi">Danh sách trả giá</string>
+    <string name="ch_a_c_y_u_c_u_tr_gi_n_o">Chưa có yêu cầu trả giá nào!</string>
+    <string name="t_ch_i">Từ chối</string>
+    <string name="ph_n_h_i_gi">Phản hồi giá</string>
+    <string name="ch_p_nh_n">Chấp nhận</string>
+    <string name="_20_02_19_07">20:02 19/07</string>
+    <string name="ng_i_mua_nguy_n_v_n_a">Người mua: Nguyễn Văn A</string>
+    <string name="gi_tr_1_000_000">Giá đã trả: 1.000.000đ</string>
+    <string name="tr_ng_th_i_ch_x_c_nh_n">Trạng thái: Chờ xác nhận</string>
+    <string name="t_n_s_n_ph_mt">Tên sản phẩm</string>
+    <string name="gi_h_nga">Giỏ hàng</string>
+    <string name="ch_a_c_s_n_ph_m_n_o_trong_gi_h_ng">Chưa có sản phẩm nào trong giỏ hàng</string>
+    <string name="t_ng_0">Tổng: 0đ</string>
+    <string name="thanh_to_n">Thanh toán</string>
+    <string name="rrr">Tên sản phẩm</string>
+    <string name="gi_1_000_000">Giá: 1.000.000đ</string>
+    <string name="x_aa">Xóa</string>
+    <string name="ch_n_t_t_c">Chọn tất cả</string>
+    <string name="t_ng_0o">Tổng: 0đ</string>
+    <string name="vnb">Thanh toán</string>
 </resources>

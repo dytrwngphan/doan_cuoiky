@@ -51,11 +51,17 @@ public class Home extends AppCompatActivity {
             if (id == R.id.nav_home) {
                 viewPager.setCurrentItem(0, false);
                 return true;
-            } else if (id == R.id.nav_add) {
+            } else if (id == R.id.nav_cart) {
                 viewPager.setCurrentItem(1, false);
                 return true;
-            } else if (id == R.id.nav_profile) {
+            } else if (id == R.id.nav_add) {
                 viewPager.setCurrentItem(2, false);
+                return true;
+            } else if (id == R.id.nav_chat) {
+                viewPager.setCurrentItem(3, false);
+                return true;
+            } else if (id == R.id.nav_profile) {
+                viewPager.setCurrentItem(4, false);
                 return true;
             }
             return false;

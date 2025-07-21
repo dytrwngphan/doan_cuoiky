@@ -21,6 +21,8 @@ import com.example.doancuoiki_dotcuoi.R;
 import com.example.doancuoiki_dotcuoi.activity.ChatDetailActivity;
 import com.example.doancuoiki_dotcuoi.adapter.ProductImagePagerAdapter;
 import com.example.doancuoiki_dotcuoi.adapter.ReviewAdapter;
+import com.example.doancuoiki_dotcuoi.model.CartItem;
+import com.example.doancuoiki_dotcuoi.model.Offer;
 import com.example.doancuoiki_dotcuoi.model.Product;
 import com.example.doancuoiki_dotcuoi.model.Review;
 import com.example.doancuoiki_dotcuoi.model.User;
@@ -353,24 +355,69 @@ public class ProductDetailFragment extends Fragment {
                 .setTitle("Mua sản phẩm")
                 .setMessage("Bạn muốn mua sản phẩm này?")
                 .setPositiveButton("Mua", (dialog, which) -> {
-                    // TODO: Xử lý logic mua hàng ở đây
-                    Toast.makeText(getContext(), "Chức năng mua hàng chưa hoàn thiện!", Toast.LENGTH_SHORT).show();
+                    buyBuy(currentProduct);
                 })
                 .setNegativeButton("Huỷ", null)
                 .show();
     }
+
+    private void buyBuy(Product product) {
+        String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Không cho mua sản phẩm của chính mình
+        if (product.getOwnerId().equals(currentUserId)) {
+            Toast.makeText(getContext(), "Bạn không thể mua sản phẩm của chính mình!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Toast.makeText(getContext(), "Chức năng mua hàng chưa hoàn thiện!", Toast.LENGTH_SHORT).show();
+    }
+
 
     private void showAddToCartDialog() {
         new AlertDialog.Builder(getContext())
                 .setTitle("Thêm vào giỏ hàng")
                 .setMessage("Thêm sản phẩm này vào giỏ?")
                 .setPositiveButton("Thêm", (dialog, which) -> {
-                    // TODO: Xử lý thêm vào giỏ hàng ở đây
+                    addToCartFromProduct(currentProduct);
                     Toast.makeText(getContext(), "Đã thêm vào giỏ hàng (mô phỏng)!", Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton("Huỷ", null)
                 .show();
     }
+    private void addToCartFromProduct(Product product) {
+        String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Không cho mua sản phẩm của chính mình
+        if (product.getOwnerId().equals(currentUserId)) {
+            Toast.makeText(getContext(), "Bạn không thể mua sản phẩm của chính mình!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String cartItemId = UUID.randomUUID().toString();
+        CartItem cartItem = new CartItem();
+        cartItem.setCartItemId(cartItemId);
+        cartItem.setProductId(product.getPostId());
+        cartItem.setOfferId(null); // Không phải offer
+        cartItem.setTitle(product.getTitle());
+        cartItem.setImageUrl(
+                (product.getImageUrls() != null && !product.getImageUrls().isEmpty())
+                        ? product.getImageUrls().get(0) : ""
+        );
+        cartItem.setPrice(product.getPrice());
+        cartItem.setStatus("pending");
+        cartItem.setUserId(currentUserId);
+
+        FirebaseFirestore.getInstance().collection("cart")
+                .document(cartItemId)
+                .set(cartItem)
+                .addOnSuccessListener(unused -> {
+                    Toast.makeText(getContext(), "Đã thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Lỗi khi thêm vào giỏ!", Toast.LENGTH_SHORT).show();
+                });
+    }
+
 
     private void showBargainDialog() {
         final EditText input = new EditText(getContext());
@@ -380,15 +427,61 @@ public class ProductDetailFragment extends Fragment {
                 .setMessage("Bạn muốn thương lượng giá với người bán?")
                 .setView(input)
                 .setPositiveButton("Gửi", (dialog, which) -> {
-                    String offer = input.getText().toString().trim();
-                    if (!TextUtils.isEmpty(offer)) {
-                        // TODO: Xử lý logic trả giá (gửi tới người bán...)
-                        Toast.makeText(getContext(), "Đã gửi giá đề nghị: " + offer, Toast.LENGTH_SHORT).show();
+                    String offerStr = input.getText().toString().trim();
+                    if (!TextUtils.isEmpty(offerStr)) {
+                        double offerPrice;
+                        try {
+                            offerPrice = Double.parseDouble(offerStr);
+                        } catch (Exception e) {
+                            Toast.makeText(getContext(), "Vui lòng nhập số hợp lệ!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        if (currentProduct.getOwnerId().equals(currentUserId)) {
+                            Toast.makeText(getContext(), "Bạn không thể trả giá cho sản phẩm của chính mình!", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        // Lấy thông tin người mua từ Firestore (nếu cần tên)
+                        db.collection("users").document(currentUserId).get().addOnSuccessListener(doc -> {
+                            String buyerName = "Bạn";
+                            if (doc.exists()) {
+                                User user = doc.toObject(User.class);
+                                if (user != null) buyerName = user.getFullName();
+                            }
+                            // Tạo Offer object
+                            String offerId = UUID.randomUUID().toString();
+                            Offer offer = new Offer();
+                            offer.setOfferId(offerId);
+                            offer.setProductId(currentProduct.getPostId());
+                            offer.setProductTitle(currentProduct.getTitle());
+                            offer.setProductImage(
+                                    (currentProduct.getImageUrls() != null && !currentProduct.getImageUrls().isEmpty())
+                                            ? currentProduct.getImageUrls().get(0) : ""
+                            );
+                            offer.setSellerId(currentProduct.getOwnerId());
+                            offer.setBuyerId(currentUserId);
+                            offer.setBuyerName(buyerName);
+                            offer.setOfferPrice(offerPrice);
+                            offer.setStatus("pending");
+                            offer.setCreatedAt(System.currentTimeMillis());
+                            offer.setLastActionBy(currentUserId);
+
+                            // Lưu lên Firestore
+                            db.collection("offers").document(offerId)
+                                    .set(offer)
+                                    .addOnSuccessListener(unused -> {
+                                        Toast.makeText(getContext(), "Đã gửi đề nghị trả giá!", Toast.LENGTH_SHORT).show();
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        Toast.makeText(getContext(), "Lỗi gửi trả giá!", Toast.LENGTH_SHORT).show();
+                                    });
+                        });
                     }
                 })
                 .setNegativeButton("Huỷ", null)
                 .show();
     }
+
 
     // ====== Địa chỉ từ lat/lon =======
     private void getAddressFromLatLng(double lat, double lng) {
