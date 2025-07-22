@@ -80,6 +80,8 @@ public class SearchProductFragment extends Fragment {
         btnSearch.setOnClickListener(vw -> searchProducts());
         btnBack.setOnClickListener(vw -> requireActivity().getSupportFragmentManager().popBackStack());
 
+        loadAllActiveProducts();
+
         return v;
     }
 
@@ -168,6 +170,23 @@ public class SearchProductFragment extends Fragment {
             tvNoProducts.setVisibility(productList.isEmpty() ? View.VISIBLE : View.GONE);
         });
     }
+    private void loadAllActiveProducts() {
+        db.collection("posts")
+                .whereEqualTo("status", "Đang bán")
+                .get()
+                .addOnCompleteListener(task -> {
+                    productList.clear();
+                    if (task.isSuccessful() && task.getResult() != null) {
+                        for (QueryDocumentSnapshot doc : task.getResult()) {
+                            Product p = doc.toObject(Product.class);
+                            productList.add(p);
+                        }
+                    }
+                    adapter.notifyDataSetChanged();
+                    tvNoProducts.setVisibility(productList.isEmpty() ? View.VISIBLE : View.GONE);
+                });
+    }
+
 
     private void sortProducts(List<Product> list, String sort) {
         switch (sort) {

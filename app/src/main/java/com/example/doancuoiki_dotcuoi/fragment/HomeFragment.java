@@ -107,7 +107,13 @@ public class HomeFragment extends Fragment {
     private void filterProducts(String categoryName) {
         filteredProducts.clear();
         for (Product p : allProducts) {
-            if (p.getCategory() != null && p.getCategory().equalsIgnoreCase(categoryName)) {
+            // Lọc theo category và chỉ lấy những sản phẩm có status = "Đang bán"
+            if (
+                    p.getCategory() != null
+                            && p.getCategory().equalsIgnoreCase(categoryName)
+                            && p.getStatus() != null
+                            && p.getStatus().equalsIgnoreCase("Đang bán")
+            ) {
                 filteredProducts.add(p);
             }
         }
@@ -120,6 +126,7 @@ public class HomeFragment extends Fragment {
             tvNoProducts.setVisibility(View.GONE);
         }
     }
+
     private void openSearchFragment() {
         requireActivity().findViewById(R.id.detailContainer).setVisibility(View.VISIBLE);
         Fragment searchFragment = new SearchProductFragment();

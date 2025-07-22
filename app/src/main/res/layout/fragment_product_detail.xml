@@ -187,12 +187,13 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
+                android:backgroundTint="#1976D2"
+                android:elevation="2dp"
                 android:text="@string/mua"
                 android:textAllCaps="false"
-                android:backgroundTint="#1976D2"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
-                android:elevation="2dp"/>
+                android:visibility="gone"/>
 
             <Space
                 android:layout_width="6dp"
@@ -349,6 +350,7 @@
             android:layout_marginBottom="8dp"
             android:nestedScrollingEnabled="false"
             android:overScrollMode="ifContentScrolls" />
-
     </LinearLayout>
+    <!-- Sản phẩm liên quan (gợi ý) -->
+
 </ScrollView>

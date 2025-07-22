@@ -1,5 +1,6 @@
 package com.example.doancuoiki_dotcuoi.fragment;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
@@ -107,10 +108,43 @@ public class CartFragment extends Fragment {
             Toast.makeText(getContext(), "Hãy chọn sản phẩm để thanh toán!", Toast.LENGTH_SHORT).show();
             return;
         }
-        // Chuyển sang màn thanh toán thực tế ở đây nếu muốn
-        Toast.makeText(getContext(), "Chức năng đang phát triển! Vui lòng thử lại sau.", Toast.LENGTH_SHORT).show();
-        // Example: Intent intent = new Intent(getContext(), CheckoutActivity.class);
-        // intent.putExtra("cartItems", (Serializable) selected);
-        // startActivity(intent);
+
+        // Hiện dialog xác nhận thanh toán
+        new AlertDialog.Builder(getContext())
+                .setTitle("Xác nhận thanh toán")
+                .setMessage("Bạn muốn thanh toán " + selected.size() + " sản phẩm?")
+                .setPositiveButton("Đồng ý", (dialog, which) -> {
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    int[] doneCount = {0};
+                    for (CartItem item : selected) {
+                        // 1. Cập nhật status của CartItem
+                        db.collection("cart")
+                                .document(item.getCartItemId())
+                                .update("status", "paid")
+                                .addOnSuccessListener(aVoid -> {
+                                    // 2. Khi CartItem update xong thì update status Product sang "Ngừng bán"
+                                    db.collection("posts")
+                                            .document(item.getProductId())
+                                            .update("status", "Ngừng bán")
+                                            .addOnSuccessListener(aVoid2 -> {
+                                                // Hoàn tất 1 sản phẩm
+                                                doneCount[0]++;
+                                                if (doneCount[0] == selected.size()) {
+                                                    Toast.makeText(getContext(), "Đã thanh toán thành công " + selected.size() + " sản phẩm!", Toast.LENGTH_SHORT).show();
+                                                }
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                Toast.makeText(getContext(), "Lỗi khi cập nhật trạng thái sản phẩm: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            });
+                                })
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(getContext(), "Lỗi khi thanh toán: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                });
+                    }
+                })
+                .setNegativeButton("Huỷ", null)
+                .show();
     }
+
+
 }

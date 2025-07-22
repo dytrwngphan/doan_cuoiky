@@ -99,6 +99,7 @@ public class PublicProfileFragment extends Fragment {
     private void loadUserProducts(String userId) {
         db.collection("posts")
                 .whereEqualTo("ownerId", userId)
+                .whereEqualTo("status", "Đang bán")
                 .get()
                 .addOnCompleteListener(task -> {
                     productList.clear();

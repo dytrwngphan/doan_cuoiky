@@ -179,4 +179,9 @@
     <string name="ch_n_t_t_c">Chọn tất cả</string>
     <string name="t_ng_0o">Tổng: 0đ</string>
     <string name="vnb">Thanh toán</string>
+    <string name="l_ch_s_giao_d_ch">Lịch sử giao dịch</string>
+    <string name="ch_a_c_giao_d_ch_n_o">Chưa có giao dịch nào.</string>
+    <string name="t_n_s_n_ph_maa">Tên sản phẩm</string>
+    <string name="ffff">Giá: 0đ</string>
+    <string name="adasasf">Đã thanh toán</string>
 </resources>
